@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Radio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="radio-container" class="hidden">
+        <div class="radio-device">
+            <!-- Antena -->
+            <div class="antenna"></div>
+            
+            <!-- Cuerpo principal -->
+            <div class="radio-body">
+                <!-- Parte superior con perillas -->
+                <div class="top-section">
+                    <div class="knob-container">
+                        <div class="knob" id="knob-left" title="Volumen">
+                            <div class="knob-indicator"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="power-button" id="power-button">
+                        <div class="power-led" id="power-led"></div>
+                    </div>
+                    
+                    <div class="knob-container">
+                        <div class="knob" id="knob-right" title="Encender/Apagar">
+                            <div class="knob-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla LCD -->
+                <div class="lcd-screen">
+                    <div class="lcd-content">
+                        <div class="lcd-label">FREQUENCY</div>
+                        <div class="lcd-frequency" id="lcd-frequency">000.0</div>
+                        <div class="lcd-unit">MHz</div>
+                        <div class="lcd-status">
+                            <span class="status-icon" id="status-locked">🔒</span>
+                            <span class="status-icon" id="status-signal">📶</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones superiores -->
+                <div class="function-buttons">
+                    <button class="func-btn" id="btn-menu">MENU</button>
+                    <button class="func-btn" id="btn-scan">SCAN</button>
+                    <button class="func-btn" id="btn-fav">FAV</button>
+                    <button class="func-btn" id="btn-vol">VOL</button>
+                </div>
+
+                <!-- Teclado numérico -->
+                <div class="keypad">
+                    <div class="keypad-row">
+                        <button class="key-btn" data-key="1">1</button>
+                        <button class="key-btn" data-key="2">2</button>
+                        <button class="key-btn" data-key="3">3</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="key-btn" data-key="4">4</button>
+                        <button class="key-btn" data-key="5">5</button>
+                        <button class="key-btn" data-key="6">6</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="key-btn" data-key="7">7</button>
+                        <button class="key-btn" data-key="8">8</button>
+                        <button class="key-btn" data-key="9">9</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="key-btn" data-key="*">*</button>
+                        <button class="key-btn" data-key="0">0</button>
+                        <button class="key-btn" data-key="#">#</button>
+                    </div>
+                </div>
+
+                <!-- Botón PTT -->
+                <div class="ptt-container">
+                    <button class="ptt-button" id="ptt-button">
+                        <div class="ptt-text">PTT</div>
+                        <div class="ptt-subtitle">CAPS LOCK</div>
+                    </button>
+                </div>
+
+                <!-- Rejillas laterales -->
+                <div class="speaker-grill left-grill"></div>
+                <div class="speaker-grill right-grill"></div>
+
+                <!-- Indicador de transmisión -->
+                <div class="transmission-indicator" id="transmission-indicator">
+                    <span>TX</span>
+                </div>
+                
+                <!-- Indicador de radio apagada -->
+                <div class="power-off-indicator" id="power-off-indicator">
+                    <span>⚠️ RADIO APAGADA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel de entrada de frecuencia -->
+        <div class="freq-input-panel" id="freq-input-panel">
+            <div class="panel-header">
+                <span>INGRESAR FRECUENCIA</span>
+                <button class="panel-close" id="panel-close">✕</button>
+            </div>
+            <div class="panel-display" id="panel-display">___._</div>
+            <div class="panel-actions">
+                <button class="panel-btn" id="panel-clear">BORRAR</button>
+                <button class="panel-btn" id="panel-enter">ENTER</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

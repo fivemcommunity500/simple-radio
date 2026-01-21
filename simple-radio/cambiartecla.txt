@@ -1,0 +1,9 @@
+Para cambiar la asignación de teclas de hablar por radio 
+
+resources/[esx]/simple-radio/config.lua
+Config.RadioKey = 137 -- CAPS LOCK (actual)
+Z = 20 ✅ Muy recomendada
+X = 73 ✅ Muy recomendada
+B = 29 ✅ Buena opción
+N = 249 ✅ Buena opción
+C = 26 ✅ Cerca del ojo

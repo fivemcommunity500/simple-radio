@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: transparent;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Contenedor principal - ABAJO A LA IZQUIERDA */
+#radio-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+/* Dispositivo de radio */
+.radio-device {
+    position: relative;
+    width: 200px;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 12px;
+    padding: 15px 12px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    border: 2px solid #1a1a1a;
+}
+
+/* Antena */
+.antenna {
+    position: absolute;
+    top: -50px;
+    left: 15px;
+    width: 6px;
+    height: 55px;
+    background: linear-gradient(to top, #333, #1a1a1a);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.antenna::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: #666;
+    border-radius: 50%;
+}
+
+/* Cuerpo de la radio */
+.radio-body {
+    position: relative;
+}
+
+/* Sección superior con perillas */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.knob-container {
+    width: 35px;
+    height: 35px;
+}
+
+.knob {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, #3a3a3a, #1a1a1a);
+    border-radius: 50%;
+    border: 2px solid #0a0a0a;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    transition: transform 0.1s ease;
+}
+
+.knob:active {
+    transform: scale(0.95);
+}
+
+.knob-indicator {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 8px;
+    background: #ff6600;
+    border-radius: 2px;
+}
+
+.power-button {
+    width: 20px;
+    height: 20px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    border: 2px solid #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.power-led {
+    width: 8px;
+    height: 8px;
+    background: #ff3333;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+    transition: all 0.3s ease;
+}
+
+.power-led.active {
+    background: #33ff33;
+    box-shadow: 0 0 10px rgba(51, 255, 51, 0.8);
+}
+
+/* Pantalla LCD */
+.lcd-screen {
+    background: #1a2a1a;
+    border: 3px solid #0a0a0a;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.8),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.lcd-content {
+    text-align: center;
+}
+
+.lcd-label {
+    font-size: 8px;
+    color: #4a6a4a;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.lcd-frequency {
+    font-size: 32px;
+    font-weight: bold;
+    color: #66ff66;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 8px rgba(102, 255, 102, 0.6);
+    line-height: 1;
+    margin: 3px 0;
+}
+
+.lcd-unit {
+    font-size: 10px;
+    color: #4a6a4a;
+    letter-spacing: 1px;
+}
+
+.lcd-status {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 10px;
+}
+
+.status-icon {
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.status-icon.active {
+    opacity: 1;
+}
+
+/* Botones de función */
+.function-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.func-btn {
+    background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+    border: 1px solid #1a1a1a;
+    border-radius: 3px;
+    color: #999;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 6px 2px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.func-btn:hover {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    color: #ccc;
+}
+
+.func-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Teclado numérico */
+.keypad {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.keypad-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.key-btn {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 1px solid #0a0a0a;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.key-btn:hover {
+    background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+    color: #ff6600;
+}
+
+.key-btn:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.5),
+        inset 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón PTT */
+.ptt-container {
+    margin-top: 8px;
+}
+
+.ptt-button {
+    width: 100%;
+    background: linear-gradient(145deg, #ff7700, #ff5500);
+    border: 3px solid #cc4400;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 
+        0 4px 8px rgba(255, 85, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.ptt-button:hover {
+    background: linear-gradient(145deg, #ff8800, #ff6600);
+    box-shadow: 
+        0 6px 12px rgba(255, 85, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.ptt-button:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 2px 4px rgba(255, 85, 0, 0.4),
+        inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.ptt-button.transmitting {
+    background: linear-gradient(145deg, #ff3300, #dd2200);
+    animation: ptt-pulse 0.5s infinite;
+}
+
+@keyframes ptt-pulse {
+    0%, 100% { box-shadow: 0 4px 8px rgba(255, 51, 0, 0.8); }
+    50% { box-shadow: 0 4px 16px rgba(255, 51, 0, 1); }
+}
+
+.ptt-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+}
+
+.ptt-subtitle {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* Rejillas de altavoz */
+.speaker-grill {
+    position: absolute;
+    width: 15px;
+    height: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            #0a0a0a 0px,
+            #0a0a0a 2px,
+            transparent 2px,
+            transparent 4px
+        );
+    border-radius: 3px;
+}
+
+.left-grill {
+    left: 3px;
+}
+
+.right-grill {
+    right: 3px;
+}
+
+/* Indicador de transmisión */
+.transmission-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 51, 0, 0.9);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 51, 0, 0.8);
+}
+
+.transmission-indicator.active {
+    opacity: 1;
+    animation: tx-blink 0.5s infinite;
+}
+
+@keyframes tx-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Indicador de radio apagada */
+.power-off-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 153, 0, 0.95);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.6);
+    border: 1px solid rgba(255, 153, 0, 0.8);
+}
+
+.power-off-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Panel de entrada de frecuencia */
+.freq-input-panel {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 2px solid #0a0a0a;
+    border-radius: 8px;
+    padding: 12px;
+    width: 200px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+.freq-input-panel.active {
+    display: block;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #999;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.panel-close {
+    background: #ff3333;
+    border: none;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.panel-display {
+    background: #1a2a1a;
+    border: 2px solid #0a0a0a;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #66ff66;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 8px rgba(102, 255, 102, 0.6);
+    margin-bottom: 10px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.panel-btn {
+    background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+    border: 1px solid #1a1a1a;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.panel-btn:hover {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    color: #ff6600;
+}
+
+.panel-btn:active {
+    transform: translateY(1px);
+}
