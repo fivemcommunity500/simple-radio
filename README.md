@@ -35,44 +35,6 @@ Una interfaz de radio portátil realista, inmersiva y totalmente integrada con e
 | **Transmit / Transmitir** | Mantener presionado **CAPS LOCK** (Configurable). |
 
 ---
-
-## 🛠️ Installation | Instalación
-
-1. **Download:** Descarga y extrae la carpeta en `resources/[esx]/simple-radio/`.
-2. **Ox Inventory:** Añade el siguiente bloque en `ox_inventory/data/items.lua`:
-
-```lua
-['radio'] = {
-    label = 'Radio',
-    weight = 220,
-    stack = false,
-    close = true,
-    description = 'Communication Radio / Radio de comunicación',
-    client = {
-        image = 'radio.png',
-        export = 'simple-radio.useRadio'
-    }
-},
-
-
-
-## ⚙️ Configuration | Configuración
-
-Puedes ajustar las teclas y canales restringidos en el archivo config.lua:
-
-Lua
-Config.RadioKey = 137  -- Tecla PTT (137 = CAPS LOCK, 20 = Z)
-
-Config.RestrictedChannels = {
-    [1.0] = {'police', 'sheriff'},
-    [2.0] = {'ambulance', 'ems'},
-    [3.0] = {'mechanic'},
-}
-
-
-
-
-
 ## 📦 Dependencies | Dependencias
 
 | Resource | Description | Descripción |
@@ -97,3 +59,37 @@ Config.RestrictedChannels = {
 ¿Buscas actualizaciones o nuevos scripts? ¡Únete a nuestra comunidad!
 
 [![Discord Shield](https://img.shields.io/badge/Discord-Join%20Us-7289da?style=for-the-badge&logo=discord)](https://discord.gg/2W9PMsYWTZ)
+
+---
+## 🛠️ Installation | Instalación
+
+1. **Download:** Descarga y extrae la carpeta en `resources/[esx]/simple-radio/`.
+2. **Ox Inventory:** Añade el siguiente bloque en `ox_inventory/data/items.lua`:
+
+```lua
+['radio'] = {
+    label = 'Radio',
+    weight = 220,
+    stack = false,
+    close = true,
+    description = 'Communication Radio / Radio de comunicación',
+    client = {
+        image = 'radio.png',
+        export = 'simple-radio.useRadio'
+    }
+},
+
+---
+
+## ⚙️ Configuration | Configuración
+
+Puedes ajustar las teclas y canales restringidos en el archivo config.lua:
+
+Lua
+Config.RadioKey = 137  -- Tecla PTT (137 = CAPS LOCK, 20 = Z)
+
+Config.RestrictedChannels = {
+    [1.0] = {'police', 'sheriff'},
+    [2.0] = {'ambulance', 'ems'},
+    [3.0] = {'mechanic'},
+}
