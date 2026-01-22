@@ -69,9 +69,9 @@ Config.RestrictedChannels = {
     [3.0] = {'mechanic'},
 }
 
----
 
-📦 Dependencies | Dependencias
+
+
 
 ## 📦 Dependencies | Dependencias
 
