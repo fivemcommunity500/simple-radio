@@ -54,7 +54,7 @@ Una interfaz de radio portátil realista, inmersiva y totalmente integrada con e
     }
 },
 
----
+
 
 ## ⚙️ Configuration | Configuración
 
